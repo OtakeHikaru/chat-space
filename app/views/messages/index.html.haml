@@ -16,7 +16,7 @@
       .group
         = link_to 'hoge group' do
           groupname
-        %p.groups__message
+        %p.group__message
           chat-message
 
   .main-content
@@ -33,10 +33,10 @@
 
     .messages
       .message
-        .message-information
-          .message-information__username
+        .message__information
+          .message__information__username
             user-name
-          .message-information__date
+          .message__information__date
             date
         %p.message__text
           message
@@ -44,7 +44,7 @@
     .main-footer
       = form_tag("/hoge", class: "form-content") do
         .form-content__textbox
-          = text_field_tag :content, '',class: 'form__text', placeholder: "type a name" 
+          = text_field_tag :content, '',class: 'form-text', placeholder: "type a name" 
             
         .form-content__button
           = submit_tag "Send", class: "send-button"
