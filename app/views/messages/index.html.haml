@@ -1,0 +1,50 @@
+.chat-space
+  .side-content
+    .side-header
+      %p.side-header__username
+        user-name
+      %ul.side-header__usermenu
+        %li.edit-button
+        = link_to do
+          = fa_icon 'edit'
+
+        %li.cog-button
+        = link_to do
+          = fa_icon 'cog'
+
+    .groups
+      .group
+        = link_to 'hoge group' do
+          groupname
+        %p.group__message
+          chat-message
+
+  .main-content
+    .main-header
+      .current-group
+        %h1.current-group__name
+          group
+        %p.current-group__members
+          hoge
+      
+      = link_to do
+        .edit-button
+          edit
+
+    .messages
+      .message
+        .message__information
+          .message__information__username
+            user-name
+          .message__information__date
+            date
+        %p.message__text
+          message
+
+    .main-footer
+      = form_tag("/hoge", class: "form-content") do
+        .form-content__textbox
+          = text_field_tag :content, '',class: 'form-text', placeholder: "type a name" 
+            
+        .form-content__button
+          = submit_tag "Send", class: "send-button"
