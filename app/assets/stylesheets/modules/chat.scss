@@ -14,6 +14,7 @@
       &__members {
         @include flexbox;
         color: $light_gray;
+        overflow: scroll;
         font-size: 12px;
         margin-top: 15px;
         .member {
@@ -42,8 +43,9 @@
     box-sizing: border-box;
     padding: 46px 40px 0;
     height: calc(100% - 100px - 90px);
+    overflow: scroll;
     .message {
-      .upper-message {
+      .user-info {
         display: flex;
         &__user-name {
           color: $black;
