@@ -10,13 +10,14 @@ $(function(){
                         ${message.created_at}
                       </div>
                     </div>
-                    <div class="message-text"
+                    <div class="message-text">
                       <p class="message-text__content">
                         ${message.content}
                       </p>
                       ${imagehtml}
                     </div>
-                  </div>`
+                  </div>
+                `
     return html;
   }
   $('#new_message').on('submit',function(e){
@@ -43,4 +44,32 @@ $(function(){
         alert('error');
       })
     })
+
+    function reloadMessages() {
+        var last_message_id = $('.message').last().data('id')
+        var user_url = document.location.pathname;
+        if (user_url.match(/messages/)) {
+            $.ajax({
+                type: 'GET',
+                url: user_url,
+                dataType: 'json',
+                data: { data: last_message_id }
+            })
+            .done(function (json) {
+                var insertHTML = '';
+                json.messages.forEach(function(message) {
+                  if (message.id > last_message_id ) {
+                    insertHTML += buildHTML(message);
+                  }
+                });
+                $('.messages').append(insertHTML);
+                $('.messages').animate({scrollTop: $('.messages')[0].scrollHeight}, 'fast');
+            })
+
+            .fail(function () {
+                alert('自動更新に失敗しました');
+            });
+        }
+    };
+    setInterval(function(){reloadMessages()}, 3000)
   })
