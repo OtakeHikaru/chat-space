@@ -37,11 +37,13 @@ $(function() {
 
   function clickAdd(user){
     var userId = user.attr("data-user-id");
-    var html = `<div class='chat-group-user clearfix js-chat-member' id='${userId}'>
+    var html = `
+                <div class='chat-group-user clearfix js-chat-member' id='${userId}'>
                   <input name='group[user_ids][]' type='hidden' value='${userId}'>
                   <p class='chat-group-user__name'>${user.attr("data-user-name")}</p>
                   <div class='user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn'>削除</div>
-                </div>`
+                </div>
+                `
     return html;
   };
 
@@ -56,3 +58,5 @@ $(function() {
     $input.parent().remove();
   });
 });
+
+
